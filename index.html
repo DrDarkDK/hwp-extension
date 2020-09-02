@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HWS Artifical Help Bot</title>
+    <link rel="icon" href="https://empyrion-homeworld.net/user/themes/empyrion/images/favicon.png">
+    <link rel="stylesheet" href="style.css" />
+    <script src="dev.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/09711b6a93.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="content-wrapper">
+        <div id="ChatArea" class="Chat">
+            <h2>HWS Artificial Help Bot</h2>
+            <hr>
+            <div id='marq'></div>
+        </div>
+        <div class="disclaimer">
+            <strong>Disclaimer:</strong> You're never talking to a real person on this website. I don't
+            process anything you write here, and won't store any information you give
+            the bot.
+        </div>
+        <div class="tools" id="tools">
+            <p class="notice"></p>
+
+            <i class="question-icon fad fa-question" title="Notice: Shorter sentence means you get a more correct answer. Preferably only 1 sentence!"></i> <input placeholder="Your Question" class="input" id="inputBox" title="Notice: Shorter sentence means you get a more correct answer. Preferably only 1 sentence!">
+            <button class="button" id="submitButton" title="You can also just press the Enter key after your question" onclick="submitText()">Send</button>
+            <button class="button clear" title="Clears your 'Chat History' with the AHB. You can also just press F5" onclick="clearText()"> Reset</button>
+        </div>
+    </div>
+    <script>try {DevOn()} catch(err) {}</script>
+
+    <script src="script.js" defer></script>
+    <script src="responses.js" defer></script>
+</body>
+</html>
