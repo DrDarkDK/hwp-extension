@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+* {
+    font-family: "Muli", sans-serif;
+}
+
+.MessagePerson {
+    border: 3px solid #019245;
+    border-right: 0px;
+    border-left: 0px;
+    margin-left: auto;
+    font-size: 18px;
+    background-color: #444;
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.MessageBot {
+    border: 3px solid #019494;
+    border-right: 0px;
+    border-left: 0px;
+    margin: 0px;
+    font-size: 18px;
+    background-color: #222;
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.Chat {
+    border: 2px solid black;
+    width: 400px;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom right,#0D191E, black);
+    position: fixed;
+    display: none;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.button {
+    background-color: #151515;
+    color: #019245;
+    border: 2px solid #22333b;
+    border-radius: 2px;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+.button:hover {
+    background-color: #00823d;
+    color: white;
+}
+
+.search {
+    border-top: 1px solid white;
+    border-radius: 10px;
+    margin: 0px;
+    padding: 2px;
+}
+
+.fa {
+    color: #d0901d;
+    font-size: 26px;
+    position: static;
+    padding: 10px;
+    left: 0 !important;
+}
+
+.inputAHB {
+    background-color: #111 !important;
+    border: 1px solid black !important;
+    border-bottom: 3px solid #d0901d !important;
+    font-size: 20px !important;
+    color: white !important;
+    width: 98% !important;
+    height: 40px !important;
+    padding: 5px !important;
+}
+
+.tag {
+    color: #2a47ae;
+}
+
+@media all and (max-width: 845px) {
+
+    .input,
+    .button,
+    .content-wrapper {
+        margin: 8px 0;
+        width: 100%;
+    }
+
+
+    .MessagePerson,
+    .MessageBot {
+        width: auto;
+        border-radius: 5px;
+    }
+
+    .disclaimer {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    img {
+        width: 500px;
+    }
+
+}

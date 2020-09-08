@@ -1,11 +1,11 @@
-var inputArea = document.getElementById("inputBox");
+var inputArea = document.getElementById("inputArea");
 var lastMessage = [];
 var oldMessages = [];
 var ticketMode = false;
 var questionNumber = 0;
 var ticket = [];
 var startSeason = "13th August"
-var endSeason = "to be the 11th November"
+var endSeason = "to be around the 11th November"
 var uniMapLink = "https://forum.empyrion-homeworld.net/uploads/default/original/2X/b/bbe20892c7c7ca690e8c5d13a68644c9cd338b0d.png"
 var uniMapSize = 0;
 var Message = "";
@@ -20,13 +20,163 @@ inputArea.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         document.getElementById("submitButton").click();
-        inputArea.select();
+        inputArea.focus(); inputArea.select();
+
+        //---
+
+        if (inputArea.value.length < 2) {
+            inputArea.setAttribute("placeholder", "Needs at least 2 character.");
+            inputArea.value = "";
+        } else {
+            SendMessage("MessagePerson", userName() + inputArea.value);
+    
+            if (ticketMode == true) {
+                canceldefault = true;
+                var quickArray = inputArea.value.split(" ");
+                if (inputArea.value.toLowerCase() != "stop") {
+                    switch (questionNumber) {
+                        case 1:
+                            ticket["title"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>Ticket Title: </b>" + ticket["title"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "Now, please explain with as much details at possible what happened?"
+                            );
+                            break;
+                        case 2:
+                            ticket["WhatHappened"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>What Happened: </b>" + ticket["WhatHappened"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "Who were involved in this? Please use their steam names/ingame names."
+                            );
+                            break;
+                        case 3:
+                            ticket["Players"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>Players involved: </b>" + ticket["Players"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "Which server did it happen on? The EU, or the NA server? Or maybe both?"
+                            );
+                            break;
+                        case 4:
+                            ticket["Server"] = extraEncode(inputArea.value);
+                            SendMessage("MessageTicket", "<b>Server: </b>" + ticket["Server"]);
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "When did this happen? Please use servertime (CEST timezone or write <a class='cmd'>cb:time</a> ingame.)"
+                            );
+                        case 5:
+                            ticket["Time"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>When did this happen: </b>" + ticket["Time"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "Which playfield did this happen on? (Playfield = Name of the planet/orbit)"
+                            );
+                            break;
+                        case 6:
+                            ticket["Playfield"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>Which playfield did this happen on: </b>" +
+                                ticket["Playfield"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "What are the <a href='https://empyrion-homeworld.net/hws-connect.html#page-structures' class='link'>Structure name(s)</a>"
+                            );
+                            break;
+                        case 7:
+                            ticket["StructureNames"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>Structure Names: </b>" + ticket["StructureNames"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "What are the structure ID's?"
+                            );
+                            break;
+                        case 8:
+                            ticket["StructureIDs"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>Structure ID's: </b>" + ticket["StructureIDs"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "How can we help you now?"
+                            );
+                            break;
+                        case 9:
+                            ticket["WhatNow"] = extraEncode(inputArea.value);
+                            SendMessage(
+                                "MessageTicket",
+                                "<b>How can we help now: </b>" + ticket["WhatNow"]
+                            );
+                            questionNumber++;
+                            SendMessage(
+                                "MessageBot",
+                                botName() + "That was all. I'll generate a link now so you can create a ticket."
+                            );
+                            createTicketLink();
+                            questionNumber = 0;
+                            ticket = [];
+                            ticketMode = false;
+                            break;
+                    }
+                } else {
+                    questionNumber = 0;
+                    ticket = [];
+                    ticketMode = false;
+                    SendMessage(
+                        "MessageBot",
+                        botName() + "Ticket mode has been disabled. You're now free to ask questions again."
+                    );
+                }
+            }
+            inputArea.value = inputArea.value.split("#").join("")
+            inputArea.value = inputArea.value.split("%").join("")
+            inputArea.value = inputArea.value.split("&").join("")
+            inputArea.value = inputArea.value.split("/").join("")
+            inputArea.value = inputArea.value.split("'").join("")
+    
+            var inputArray = inputArea.value
+    
+            try {if (devMode.includes("true")) {try {devFindAnswer(inputArray)} catch(err) {}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited.
+            try {if (!devMode.includes("true")) {findAnswer(inputArray);}} catch(err) {findAnswer(inputArray);}
+            window.inputArea.value = "";
+            oldMessages = lastMessage;
+            lastMessage = [];
+        }
+
     }
 });
 
 //Change 1 to 0 inorder to disable this marquee.
-window.onload = function() {if(0 == 1) {addMarq();};}; function addMarq() {var x = document.createElement("marquee");x.innerHTML = "<b style='color: #fdb100'>Important:</b>";x.setAttribute("scrollamount", 1); x.setAttribute("scrolldelay", "10");x.setAttribute("truespeed", "");x.setAttribute("loop", 2);document.getElementById("marq").appendChild(x)}
+//window.onload = function() {if(0 == 1) {addMarq();};}; function addMarq() {var x = document.createElement("marquee");x.innerHTML = "<b style='color: #fdb100'>Important:</b>";x.setAttribute("scrollamount", 1); x.setAttribute("scrolldelay", "10");x.setAttribute("truespeed", "");x.setAttribute("loop", 2);document.getElementById("marq").appendChild(x)}
 
+/*
 function submitText() {
     if (inputArea.value.length < 2) {
         inputArea.setAttribute("placeholder", "Needs at least 2 character.");
@@ -173,7 +323,7 @@ function submitText() {
         oldMessages = lastMessage;
         lastMessage = [];
     }
-}
+}*/
 
 function SendMessage(msgclass, msg) {
     var Chat = document.getElementById("ChatArea");
@@ -286,8 +436,8 @@ function removeA(arr) {
 }
 
 synonyms = {
-    okay: ["Okay", "All right"],
-    hello: ["Hi", "Hello", "Greetings", "Howdy"],
+    okay: ["Okay", "All right", "Alright"],
+    hello: ["Hi", "Hello", "Greetings", "Howdy", "Hi there", "Hello there", "Good to see you", "Nice to see you"],
     whatsup: ["How are you?", "What's up?", "What's happening?", "How goes it?", "How's it going?"],
     if: ["If", "In case that", "In case", "Assuming that", "Granted that"],
     i: ["I'm", "I am"],
@@ -535,6 +685,14 @@ function urlCheck(message) {
     Tregex = /HwP UP Unlock Guide/;
     if (Tregex.test(message)) {
         message = message.split('HwP UP Unlock Guide').join("<a target='_blank' class='link' href='https://www.youtube.com/watch?v=ez9UsBVuWVI'>HwP UP Unlock Guide</a>")
+    }
+    Tregex = /Skill Tree/;
+    if (Tregex.test(message)) {
+        message = message.split('Skill Tree').join("<a target='_blank' class='link' href='https://forum.empyrion-homeworld.net/t/hws-skill-tree/9696'>Skill Tree</a>")
+    }
+    Tregex = /Support Us/;
+    if (Tregex.test(message)) {
+        message = message.split('Support Us').join("<a target='_blank' class='link' href='https://empyrion-homeworld.net/hws-connect.html#page-support-us'>Support Us</a>")
 	}
     return(message)
 }

@@ -1,5 +1,5 @@
 lastMessage.push("#00")
-SendMessage("MessageBot", botName() + "Hello, what can I help you with? " + PC(synonyms["if"]) + " you have questions about me, then please read the <a href='https://forum.empyrion-homeworld.net/t/hws-artificial-help-bot/25530' target='_blank' class='link'>forum post</a> about me.<br><br>" + PC(synonyms["whatsup"]))
+SendMessage("MessageBot", botName() + "Hello, what can I help you with? " + PC(synonyms["if"]) + " you have questions about me, then please read the <a href='https://forum.empyrion-homeworld.net/t/hws-artificial-help-bot/25530' target='_blank' class='link'>forum post</a> about me.<br><br>You can also experience the full version by going to <a href='https://ahb.hws.global' target='_blank' class='link'>https://ahb.hws.global</a><br><br>" + PC(synonyms["whatsup"]))
 
 function findAnswer(words) {
     if (ticketMode == false) {
@@ -12,7 +12,7 @@ function findAnswer(words) {
         if (Tregex.test(words) && !oldMessages.includes("#02")) {
             lastMessage.push("#02")
             createResponse(PC(synonyms["i"]) + PC(synonyms["howUdoing"]))
-        } else if (oldMessages.includes("#02")) {
+        } else if (oldMessages.includes("#02") && Tregex.test(words)) {
             createResponse(PC(synonyms["repeat"]) + PC(synonyms["i"]) + PC(synonyms["howUdoing"]))
         }
 
@@ -93,7 +93,7 @@ function findAnswer(words) {
             }
             Tregex = /find|check|get/i;
             if (Tregex.test(words)) {
-                Tregex = /id/i;
+                Tregex = /\bid/i;
                 if (Tregex.test(words)) {
                     lastMessage.push("#10")
                     createResponse("To " + PC(synonyms["find"]) + " the ID of your ship you can check Structure Commander and " + PC(synonyms["find"]) + " your ship, or press the key left of 1, and then write <a class='cmd'>DI</a> and look directly at your ship.");
@@ -102,7 +102,7 @@ function findAnswer(words) {
         }
 
         Tregex = /wipe|season|session|server|carry over/i;
-        Fregex = /\ocd\b|class/i;
+        Fregex = /\ocd\b|class|cross|warp/i;
         if (Tregex.test(words) && !Fregex.test(words)) {
             Tregex = /what|will/i;
             Fregex = /servertime|server time|timezone|time zone/;
@@ -131,9 +131,8 @@ function findAnswer(words) {
         if (Tregex.test(words)) {
             Tregex = /zone|system/i;
             if (Tregex.test(words)) {
-                currentImg = "E2";
                 lastMessage.push("#14")
-                createResponse("You can find an OCD Zone all the way on top of EGS HQ, on the ECC planet, in ECC System. In the OCD Zone, you can do <a class='cmd'>ocd:put</a> to drop stuff inside your OCD, and you can go to HWS Connect to withdraw items from your OCD. When you get OCD level 5 or above, you can do both of those things no matter where you are in PvE. To use OCD in PvP you need OCD 7 or above. You can read more about the Orbital Cargo Drone in the HWS Guide. <img src='https://cdn.glitch.com/f41acad8-0ff3-48a7-a3e9-1709a4bb1a30%2F09a3d5876970a191145ec27d61f9f23c621edb10.jpeg?v=1595316369295'>");
+                createResponse("You can find an OCD Zone all the way on top of EGS HQ, on the ECC planet, in ECC System. In the OCD Zone, you can do <a class='cmd'>ocd:put</a> to drop stuff inside your OCD, and you can go to HWS Connect to withdraw items from your OCD. When you get OCD level 5 or above, you can do both of those things no matter where you are in PvE. To use OCD in PvP you need OCD 7 or above. You can read more about the Orbital Cargo Drone in the HWS Guide.");
             }
             Tregex = /what|how/i;
             if (Tregex.test(words)) {
@@ -170,7 +169,7 @@ function findAnswer(words) {
             }
         }
 
-        Tregex = /ship|base|\cv\b|\sv\b|sv?\b|\hv\b|vessel|motorbike kit/i;
+        Tregex = /ship|base|\cv\b|\sv|hv\b|vessel|motorbike kit/i;
         if (Tregex.test(words)) {
             Tregex = /wont|cant|will not/i;
             Fregex = /find|rotate|rotation|turn/i;
@@ -189,7 +188,7 @@ function findAnswer(words) {
                 createResponse("The fact that HWS claimed your structure means it exceeded the limits some way. It was most likely too big, or you had too many vessels on the playfield or in total. You can do <a class='cmd'>egs:buyback:ID</a> to buy your structure back but it can be expensive. Make sure to find the reason it was taken before you buy it back since it'll just be taken again.");
             }
             Tregex = /lost|find|missing|disappear/i;
-            Fregex = /half|25%|50%/i;
+            Fregex = /half|25%|50%|ID\b/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#22")
                 createResponse(PC(synonyms["if"]) + " your structures are missing, try checking your Structure Commander and see if you can " + PC(synonyms["find"]) + " them there. If you can't find them go to https://help.hws.global and make a ticket, and then the admins can check what happened.");
@@ -264,7 +263,7 @@ function findAnswer(words) {
             Tregex = /you|this|who/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#33")
-                createResponse("I was programmed by Dr. Dark. If you have any questions about this website feel free to contact him over discord. His name and tag is Dr. Dark#0555");
+                createResponse("I was programmed by Dr. Dark. If you have any questions about this website feel free to contact him over discord. His name and tag is <a href='https://discord.gg/mahSXDp' class='tag' target='_blank'>@Dr. Dark#0555</a>");
             }
         }
         Tregex = /npc core|alien core/i;
@@ -333,7 +332,7 @@ function findAnswer(words) {
         }
         Tregex = /ban/i;
         if (Tregex.test(words)) {
-            Tregex = /why/i;
+            Tregex = /why|help/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#43")
                 createResponse("Shame on you hehe. There's a couple options here. Either you did something dumb and deserved the ban, or you accidentally used the console and wrote something you shouldn't have. If you used the console you can contact HWP, or go to https://help.hws.global and the admins will probably unban you.");
@@ -424,14 +423,12 @@ function findAnswer(words) {
             Tregex = /garage/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#56")
-                currentImg = "E6"
-                createResponse("The HWS Garage is a place where you can buy special ships. All ships are made for HWS, and you won't find them anywhere else. The special thing about HWS Garage Ships is that they can exceed the server limits. They can for example have up to 10 extra drills. Or more weapons than normal ships. But Garage ships are also quite expensive. <img src='https://cdn.glitch.com/f41acad8-0ff3-48a7-a3e9-1709a4bb1a30%2FScreenshot_11.png?v=1595318810311' id='E6' onclick='imageLarge()'>");
+                createResponse("The HWS Garage is a place where you can buy special ships. All ships are made for HWS, and you won't find them anywhere else. The special thing about HWS Garage Ships is that they can exceed the server limits. They can for example have up to 10 extra drills. Or more weapons than normal ships. But Garage ships are also quite expensive.");
             }
             Tregex = /recycle/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#57")
-                currentImg = "E3"
-                createResponse("You can recycle ships/bases on HWS using the <a class='cmd'>egs:recycle:ID</a> command. Unless you have EGS Recycle level 5, you will need to go to a recycling zone to recycle your ships. The only recycle zone on HWS is located in ECC Sector, in space. Though if you have EGS Recycle level 5 you can recycle from anywhere. <img src='https://cdn.glitch.com/f41acad8-0ff3-48a7-a3e9-1709a4bb1a30%2FScreenshot_8.png?v=1595317981442'>");
+                createResponse("You can recycle ships/bases on HWS using the <a class='cmd'>egs:recycle:ID</a> command. Unless you have EGS Recycle level 5, you will need to go to a recycling zone to recycle your ships. The only recycle zone on HWS is located in ECC Sector, in space. Though if you have EGS Recycle level 5 you can recycle from anywhere.");
             }
             Tregex = /death|die|dying/i;
             if (Tregex.test(words)) {
@@ -451,14 +448,12 @@ function findAnswer(words) {
             Tregex = /bank|bank zone/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#61")
-                currentImg = "E4"
-                createResponse("You can " + PC(synonyms["find"]) + " a Bank Zone by the EGS HQ on the ECC Planet. The bank zone is the entire blue area inside the EGS HQ. In the bank zone, you can use commands like <a class='cmd'>eb:payin:X</a> or <a class='cmd'>eb:payout:X</a>. Once you've been in the bank zone for a minute or so you will get marked for daily interest. <img src='https://cdn.glitch.com/f41acad8-0ff3-48a7-a3e9-1709a4bb1a30%2FScreenshot_9.png?v=1595318368509'>");
+                createResponse("You can " + PC(synonyms["find"]) + " a Bank Zone by the EGS HQ on the ECC Planet. The bank zone is the entire blue area inside the EGS HQ. In the bank zone, you can use commands like <a class='cmd'>eb:payin:X</a> or <a class='cmd'>eb:payout:X</a>. Once you've been in the bank zone for a minute or so you will get marked for daily interest.");
             }
             Tregex = /spawn zone|egs:spawn/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#62")
-                currentImg = "E5"
-                createResponse(PC(synonyms["if"]) + " you're looking for an EGS Zone, then you must visit the ECC Planet. On the ECC planet, there is a POI called Elemental Galactic City HQ (EGS HQ). Once you've found that look for the green part of the POI. That's the EGS Zone. <img src='https://cdn.glitch.com/f41acad8-0ff3-48a7-a3e9-1709a4bb1a30%2FScreenshot_10.png?v=1595318561147'>");
+                createResponse(PC(synonyms["if"]) + " you're looking for an EGS Zone, then you must visit the ECC Planet. On the ECC planet, there is a POI called Elemental Galactic City HQ (EGS HQ). Once you've found that look for the green part of the POI. That's the EGS Zone.");
             }
             Tregex = /homeworld|\hw\b/i;
             if (Tregex.test(words)) {
@@ -512,8 +507,7 @@ function findAnswer(words) {
                 createResponse("The easiest place to find rare resources is in PvP areas as Reward = Risk. Though you can still find all rare resources in PvE. For example, Phoenix System is a great place to find resources and probably the best area in PvE.");
             } else {
                 lastMessage.push("#72")
-                currentImg = "E0"
-                createResponse("The HWS Universe is quite big and has lots of exploration waiting to be done. Many hours have been spent working on the universe by the admins, and with some feedback from the community. <img src='" + uniMapLink + "'>");
+                createResponse("The HWS Universe is quite big and has lots of exploration waiting to be done. Many hours have been spent working on the universe by the admins, and with some feedback from the community.");
             }
         }
         Tregex = /daily|interest/i;
@@ -682,7 +676,7 @@ function findAnswer(words) {
             Tregex = /credit|money/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#99")
-                createResponse("You can't buy credits on HWS since we consider that pay to win. HWS is in no way pay to win, and we never want to become that. Therefore you can't buy credits and similar riches.");
+                createResponse("You can't buy credits on HWS since we consider that pay to win. HWS is in no way pay to win, and we never want to become that. Therefore you can't buy credits and similar riches. But you might be able to find some player willing to make a donation in your name if you pay them a lot of credits, but make sure you trust the player!");
             }
         }
         Tregex = /star fragment|fragment/i;
@@ -1032,7 +1026,7 @@ function findAnswer(words) {
                 }}
         Tregex = /servertime|server time|timezone|time zone/i;
         if (Tregex.test(words)) {
-            lastMessage.push("#999");
+            lastMessage.push("#157");
             createResponse("The servertime on HWS is located by the timezone CEST. You can write <a class='cmd'>cb:time</a> ingame and the game will tell you current servertime.");
                 }
         Tregex = /rotate|turn/i;
@@ -1041,9 +1035,85 @@ function findAnswer(words) {
             if (Tregex.test(words)) {
                 Tregex = /how|can i/i;
                 if (Tregex.test(words)) {
-                    lastMessage.push("#999");
+                    lastMessage.push("#158");
                     createResponse("To rotate blocks you need to press Page Up, and Page down buttons, and Home and End, and then Insert and Delete.");
                 }}}
+        Tregex = /Economy Utility Tool|EUT|Economy Tool/i;
+        if (Tregex.test(words)) {
+            Tregex = /what/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#159");
+                createResponse("The Economy Utility Tool is a tool made by <a href='https://discord.gg/mahSXDp' class='tag' target='_blank'>@Dr. Dark#0555</a>. The tool is able to give you a great overview of your current economy, and allows you to take your economy to the next level.");
+                }}
+        Tregex = /send|sent/i;
+        if (Tregex.test(words)) {
+            Tregex = /credits|money|cash/i;
+            if (Tregex.test(words)) {
+                Tregex = /how|can i/i;
+                if (Tregex.test(words)) {
+                    lastMessage.push("#160");
+                    createResponse("To send credits to another player just go to the Elemental Bank zone by the EGS HQ on ECC, and then write eb:send:Player Name/Account Nr:Amount. But be aware that Player Names are case sensitive. For example, eb:send:StarCitizen:50000.");
+        }}}
+        Tregex = /daily loot/i;
+        if (Tregex.test(words)) {
+            Tregex = /reset|wrong/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#161");
+                createResponse("The Daily Loot which can be collected from HWS Connect resets every 28th day. This timer is the same for everyone. If your loot cycle was reset, then it was for everyone else too. You have to collect the daily every day if you want the special loot on day 28.");
+                }}
+        Tregex = /skill tree/i;
+        if (Tregex.test(words)) {
+            Tregex = /what/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#162");
+                createResponse("The Skill Tree in HWS Connect is a way for you to upgrade your character. You gain a skill point daily which you can use to upgrade things like your Health Point amount, or you Food Amount, or even gain a nice amount of XP.");
+                }}
+        Tregex = /planet|supporter playfield|orbit/i;
+        if (Tregex.test(words)) {
+            Tregex = /get my own|buy a/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#163");
+                createResponse("You can buy your own planet on HWS Connect under the Support Us category. Make sure to contact <a href='https://discord.gg/mahSXDp' class='tag' target='_blank'>@RexXxuS#2072</a> after you bought it, so you can agree on the details about it.");
+                }}
+        Tregex = /suicide|kill myself|kill my self/i;
+        if (Tregex.test(words)) {
+            Tregex = /how|can i/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#164");
+                createResponse("You can kill yourself by opening your console (Default is the key left of 1), and then you write 'destroyme' without the 's.");
+                }}
+        Tregex = /home/i;
+        if (Tregex.test(words)) {
+            Tregex = /set/i;
+            if (Tregex.test(words)) {
+                Tregex = /how|can i/i;
+                if (Tregex.test(words)) {
+                    lastMessage.push("#165");
+                    createResponse("To set a home, just write <a class='cmd'>cb:sethome:ID</a>, and the ID is the ID of the base or CV you want to set your home to.");
+        }}}
+        Tregex = /mods/i;
+        if (Tregex.test(words)) {
+            Tregex = /what|which/i;
+            if (Tregex.test(words)) {
+                Tregex = /HWS|this server|the server/i;
+                if (Tregex.test(words)) {
+                    lastMessage.push("#166");
+                    createResponse("HWS uses a lot of mods made specifically for HWS. It does not use any mods youve seen on other servers. You can find out more about HWS and the mods by reading the HWS Guide.");
+        }}}
+        Tregex = /console/i;
+        if (Tregex.test(words)) {
+            Tregex = /open/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#999");
+                createResponse("To open your console, just press the key left of 1. Unless you changed the key, then you can find the shortcut inside your settings.");
+                }}
+        Tregex = /difference/i;
+        if (Tregex.test(words)) {
+            Tregex = /full version|ahb site/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#999");
+                createResponse("The difference between this version of the AHB and the full version, is that I cant send you images here. There may also be a couple other differences. But I can provide you mostly with same responses as full version.");
+                }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 
