@@ -438,7 +438,7 @@ function findAnswer(words) {
             Tregex = /monolith/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#59")
-                createResponse("The HWS Teleport Monoliths are special POI's which allows you to teleport to most of the central universe. But to use them, you must first solve a puzzle located inside the monolith POIs.");
+                createResponse("The HWS Teleport Monoliths are special POI's which allows you to teleport to most of the central universe. They are admin cored so they should be easy to find if a planet has one. But to use them, you must first solve a puzzle located inside the monolith POIs.");
             }
             Tregex = /ecc/i;
             if (Tregex.test(words)) {
@@ -1104,14 +1104,14 @@ function findAnswer(words) {
         if (Tregex.test(words)) {
             Tregex = /open/i;
             if (Tregex.test(words)) {
-                lastMessage.push("#999");
+                lastMessage.push("#167");
                 createResponse("To open your console, just press the key left of 1. Unless you changed the key, then you can find the shortcut inside your settings.");
                 }}
         Tregex = /difference/i;
         if (Tregex.test(words)) {
             Tregex = /full version|ahb site/i;
             if (Tregex.test(words)) {
-                lastMessage.push("#999");
+                lastMessage.push("#168");
                 createResponse("The difference between this version of the AHB and the full version, is that I cant send you images here. There may also be a couple other differences. But I can provide you mostly with same responses as full version.");
                 }}
 
