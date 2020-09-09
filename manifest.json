@@ -6,7 +6,7 @@
 "content_scripts": [ {
       "css": [ "style/style.css" ],
       "js": [ "js/jquery-3.4.1.min.js", "js/content.js", "js/script.js", "js/responses.js" ],
-      "matches": [ "https://empyrion-homeworld.net/*" ]
+      "matches": [ "https://empyrion-homeworld.net/hws-connect.html" ]
    } ],
 	"page_action": {
 		"default_popup": "popup.html",
