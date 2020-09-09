@@ -11,7 +11,7 @@ createBox();
 createButtons();
 
 function createBox() {
-	Cchatbox.innerHTML = "<br><div id='Cnav'>X</div><br><h3 style='text-align: center;'>Artificial Help Bot</h3>";
+	Cchatbox.innerHTML = "<br><div><p id='Cnav'>X</p><h3 class='Ch3' style='text-align: center;'>Artificial Help Bot</h3></div>";
 	Cchatbox.setAttribute("id", "Chat")
 	Cchatbox.setAttribute("class", "Chat")
 	document.body.appendChild(Cchatbox);

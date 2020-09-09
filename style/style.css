@@ -150,6 +150,10 @@
     cursor: pointer;
 }
 
+.Ch3 {
+    line-height: normal !important;
+}
+
 @media all and (max-width: 845px) {
 
     .input,

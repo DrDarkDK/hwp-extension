@@ -1,5 +1,5 @@
 lastMessage.push("#00")
-SendMessage("MessageBot", botName() + "Hello, what can I help you with? " + PC(synonyms["if"]) + " you have questions about me, then please read the <a href='https://forum.empyrion-homeworld.net/t/hws-artificial-help-bot/25530' target='_blank' class='link'>forum post</a> about me.<br><br>You can also experience the full version by going to <a href='https://ahb.hws.global' target='_blank' class='link'>https://ahb.hws.global</a><br><br>" + PC(synonyms["whatsup"]))
+SendMessage("MessageBot", botName() + "Hello, what can I help you with? " + PC(synonyms["if"]) + " you have questions about me, then please read the <a href='https://forum.empyrion-homeworld.net/t/hws-artificial-help-bot/25530' target='_blank' class='link'>forum post</a> about me.<br><br>You can also experience the full version by going to <a href='https://ahb.hws.global' target='_blank' class='link'>https://ahb.hws.global/</a><br><br>" + PC(synonyms["whatsup"]))
 
 function findAnswer(words) {
     if (ticketMode == false) {
