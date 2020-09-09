@@ -42,6 +42,7 @@
     display: none;
     overflow: auto;
     overflow-x: hidden;
+    z-index: 2;
 }
 
 .button {
@@ -82,6 +83,7 @@
 }
 
 .inputAHB {
+    margin-top: 5px !important;
     background-color: #111 !important;
     border: 1px solid black !important;
     border-bottom: 3px solid #d0901d !important;
@@ -90,10 +92,27 @@
     width: 98% !important;
     height: 40px !important;
     padding: 5px !important;
+    box-shadow: none !important;
 }
 
+.inputAHB:focus {
+    border: 1px solid white !important;
+    border-radius: 3px;
+}
 .tag {
     color: #2a47ae;
+}
+
+.smallInput {
+    background-color: #111;
+    border: 1px solid black;
+    border-bottom: 3px solid #d0901d;
+    font-size: 13px;
+    color: white;
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px 5px 0px 0px;
 }
 
 @media all and (max-width: 845px) {
@@ -112,13 +131,11 @@
         border-radius: 5px;
     }
 
-    .disclaimer {
-        font-size: 12px;
-        padding: 15px;
-    }
-
-    img {
-        width: 500px;
+    .Chat {
+        border: 2px solid black;
+        border-bottom: 0;
+        width: 300px;
+        height: 100%;
     }
 
 }

@@ -20,6 +20,13 @@ inputArea.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         document.getElementById("submitButton").click();
+        inputArea.select();
+    }
+});
+
+submitButton.addEventListener("click", function() {
+        event.preventDefault();
+        document.getElementById("submitButton").click();
         inputArea.focus(); inputArea.select();
 
         //---
@@ -171,7 +178,7 @@ inputArea.addEventListener("keyup", function(event) {
         }
 
     }
-});
+);
 
 //Change 1 to 0 inorder to disable this marquee.
 //window.onload = function() {if(0 == 1) {addMarq();};}; function addMarq() {var x = document.createElement("marquee");x.innerHTML = "<b style='color: #fdb100'>Important:</b>";x.setAttribute("scrollamount", 1); x.setAttribute("scrolldelay", "10");x.setAttribute("truespeed", "");x.setAttribute("loop", 2);document.getElementById("marq").appendChild(x)}
@@ -693,6 +700,10 @@ function urlCheck(message) {
     Tregex = /Support Us/;
     if (Tregex.test(message)) {
         message = message.split('Support Us').join("<a target='_blank' class='link' href='https://empyrion-homeworld.net/hws-connect.html#page-support-us'>Support Us</a>")
+    }
+    Tregex = /Size Class/;
+    if (Tregex.test(message)) {
+        message = message.split('Size Class').join("<a target='_blank' class='link' href='https://empyrion-homeworld.net/tools/emp-class-calculator'>Size Class</a>")
 	}
     return(message)
 }

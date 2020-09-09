@@ -230,7 +230,7 @@ function findAnswer(words) {
             Tregex = /blueprint|\bp\b|factory/i; 
             if (Tregex.test(words)) {
                 lastMessage.push("#28")
-                createResponse("Your blueprints or resources missing is could be because of a couple things. Blueprints are stored locally so if you switched computer or something you won't be able to see yours blueprints from the other PC. If you recently tried to delete your cache then that could be why your BP's are gone.<br>Your blueprints are stored in the cache, so delete the cache and your blueprints disappear. Sadly the admins have no logs over this and can't " + PC(synonyms["help"]) + " you with them, but now you've learned that :)");
+                createResponse("Your blueprints or resources missing is could be because of a couple things. Blueprints are stored locally so if you switched computer or something you won't be able to see your blueprints from the other PC. If you recently tried to delete your cache then that could be why your BP's are gone.<br>Your blueprints are stored in the cache, so delete the cache and your blueprints disappear. Sadly the admins have no logs over this and can't " + PC(synonyms["help"]) + " you with them, but now you've learned that :)");
             }
             Tregex = /what/i;
             Fregex = /container|alien|universe|systems/i;
@@ -317,7 +317,7 @@ function findAnswer(words) {
             lastMessage.push("#40")
             createResponse(PC(synonyms["thanks"]));
         }
-        Tregex = /restart|start over|reset/i;
+        Tregex = /restart|start over|reset|start completely new|start completely over/i;
         if (Tregex.test(words)) {
             Tregex = /how|can/i;
             if (Tregex.test(words)) {
@@ -392,7 +392,7 @@ function findAnswer(words) {
             Tregex = /freelancer/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#51")
-                createResponse("Freelancer is one of 4 origins on HWS. Their origin weapon is an Epic Laser Rifle. As a freelancer, you can use Yellow, and Grey Alien Containers. freelancer, storywise, is a PvPvE origin.");
+                createResponse("Freelancer is one of 4 origins on HWS. Their origin weapon is an Epic Laser Rifle. As a freelancer, you can use Yellow and Grey Alien Containers. freelancer, storywise, is a PvPvE origin.");
             }
             Tregex = /federation/i;
             if (Tregex.test(words)) {
@@ -458,7 +458,7 @@ function findAnswer(words) {
             Tregex = /homeworld|\hw\b/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#63")
-                createResponse("The homeworld system very special. There " + PC(synonyms["youWill"]) + " find all the most rare resources, and lots of very hard POI's.. which of course give great loot. The entire homeworld system is PvP, and is often scouted by the larger factions on the server. In the homeworld system, " + PC(synonyms["youWill"]) + " find many moons, and then the special Homeworld Planet. The homeworld planet has tons of resources, and even has layers of the terrain made of all resources.");
+                createResponse("The homeworld system very special. There " + PC(synonyms["youWill"]) + " find all the rarest resources, and lots of very hard POI's.. which of course give great loot. The entire homeworld system is PvP and is often scouted by the larger factions on the server. In the homeworld system, " + PC(synonyms["youWill"]) + " find many moons, and then the special Homeworld Planet. The homeworld planet has tons of resources, and even has layers of the terrain made of all resources.");
             }
             Tregex = /blackhole|\bh\b/i;
             if (Tregex.test(words)) {
@@ -468,7 +468,7 @@ function findAnswer(words) {
             Tregex = /egs hq|elemental galactic city|ecc hq/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#65")
-                createResponse("EGS HQ is the most important POI on the entire HWS server. In the Elemental Capital City HQ " + PC(synonyms["youWill"]) + " find things like the Elemental Bank, the HWS Marketplace, and much more. There are many useful guides in the top of the building as well. It's definitely worth checking out, no matter who you are.");
+                createResponse("EGS HQ is the most important POI on the entire HWS server. In the Elemental Capital City HQ " + PC(synonyms["youWill"]) + " find things like the Elemental Bank, the HWS Marketplace, and much more. There are many useful guides at the top of the building as well. It's definitely worth checking out, no matter who you are.");
             }
             Tregex = /golden globe|\gg\b/i;
             if (Tregex.test(words)) {
@@ -581,7 +581,7 @@ function findAnswer(words) {
         Tregex = /exploration|reward/i;
         if (Tregex.test(words)) {
             lastMessage.push("#84")
-            createResponse("On HWS we try to give you a reason why you should go and explore the universe. That means that if you fulfill certain criterias you will get lots of Exploration Rewards. The rewards are some credits, and Reputation Points, but you can also loot the resources the planets have to offer.");
+            createResponse("On HWS we try to give you a reason why you should go and explore the universe. That means that if you fulfill certain criteria you will get lots of Exploration Rewards. The rewards are some credits, and Reputation Points, but you can also loot the resources the planets have to offer.");
         }
         Tregex = /mission|stargate|pda/i;
         Fregex = /stuck/i;
@@ -766,7 +766,7 @@ function findAnswer(words) {
             Tregex = /died|dead/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#110")
-                createResponse("Plants are sometimes a bit buggy in empyrion. The first thing you want to check if your plants die is, is it 22 degrees (C) in the room with your plants (25 degrees under growing lights), and is there oxygen in the room?<br>If the answer to one of those questions is no then your structure isn't air tight, or you don't have a ventilator in your structure. If you are 100% sure you have oxygen and your base is air tight, it could be due to a bug they died. Not much which can be done here sadly.");
+                createResponse("Plants are sometimes a bit buggy in empyrion. The first thing you want to check if your plants die is, is it 22 degrees (C) in the room with your plants (25 degrees under growing lights), and is there oxygen in the room?<br>If the answer to one of those questions is no then your structure isn't airtight, or you don't have a ventilator in your structure. If you are 100% sure you have oxygen and your base is airtight, it could be due to a bug they died. Not much which can be done here sadly.");
             }
         }
         Tregex = /patreon|patron/i;
@@ -1113,6 +1113,13 @@ function findAnswer(words) {
             if (Tregex.test(words)) {
                 lastMessage.push("#168");
                 createResponse("The difference between this version of the AHB and the full version, is that I cant send you images here. There may also be a couple other differences. But I can provide you mostly with same responses as full version.");
+                }}
+        Tregex = /size class/i;
+        if (Tregex.test(words)) {
+            Tregex = /calculated|found/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#169");
+                createResponse("Size Class of structures are calculated by the game checking Lights, Devices, and triangles. Lights are the biggest killer regarding size class. Lights take 0.1 size class each.");
                 }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.

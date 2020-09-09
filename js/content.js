@@ -1,6 +1,3 @@
-//Notes:
-// - Send button needs an EventListener assigned to work.
-
 var Cchatbox = document.createElement("div");
 var CansArea = document.createElement("div"); CansArea.setAttribute("id", "ChatArea");
 var Cinput = document.createElement("input");
