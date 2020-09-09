@@ -444,7 +444,7 @@ function removeA(arr) {
 
 synonyms = {
     okay: ["Okay", "All right", "Alright"],
-    hello: ["Hi", "Hello", "Greetings", "Howdy", "Hi there", "Hello there", "Good to see you", "Nice to see you"],
+    hello: ["Hi.", "Hello.", "Greetings.", "Howdy.", "Hi there.", "Hello there.", "Good to see you.", "Nice to see you."],
     whatsup: ["How are you?", "What's up?", "What's happening?", "How goes it?", "How's it going?"],
     if: ["If", "In case that", "In case", "Assuming that", "Granted that"],
     i: ["I'm", "I am"],
@@ -454,7 +454,7 @@ synonyms = {
     youWill: ["you'll", "you will"],
     howUdoing: [" good, thanks for asking :)", " alright.", " doing great!", " doing well, and yourself?", " fine, and you?"],
     repeat: ["You already asked me that. ", "Why are you asking me that again? ", "I already answered that. "],
-    thanks: ["You're welcome ;)", "No problem :)", "Anytime", "I gotchu ^^"]
+    thanks: ["You're welcome ;)", "No problem :)", "Anytime.", "I gotchu ^^"]
 }
 
 function PC(array) {
