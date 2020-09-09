@@ -1,3 +1,8 @@
+var burgMenu = document.createElement("div");
+burgMenu.setAttribute("class", "fa fa-comments-o");
+burgMenu.setAttribute("id", "burgMenu");
+burgMenu.addEventListener("click", toggleBurg);
+
 var Cchatbox = document.createElement("div");
 var CansArea = document.createElement("div"); CansArea.setAttribute("id", "ChatArea");
 var Cinput = document.createElement("input");
@@ -6,13 +11,17 @@ createBox();
 createButtons();
 
 function createBox() {
-	Cchatbox.innerHTML = "<br><br><br><h3 style='text-align: center;'>Artifical Help Bot</h3>";
+	Cchatbox.innerHTML = "<br><div id='Cnav'>X</div><br><h3 style='text-align: center;'>Artifical Help Bot</h3>";
 	Cchatbox.setAttribute("id", "Chat")
 	Cchatbox.setAttribute("class", "Chat")
 	document.body.appendChild(Cchatbox);
 	Cchatbox.appendChild(CansArea)
-}
+	document.getElementById("Cnav").addEventListener("click", toggleBurg);
 
+	document.getElementById("Cnav").addEventListener("click", function() {
+		document.getElementById("Coverlay").remove();
+	})
+}
 function createButtons() {
 	var buttonArea = document.createElement("div");
 	buttonArea.style.display = "block";
@@ -30,29 +39,45 @@ function createButtons() {
 
 	Csend.innerHTML = "Send";
 	Csend.setAttribute("class", "button")
-	Csend.setAttribute("id", "submitButton"); Csend.setAttribute("onclick", "submitText()")
+	Csend.setAttribute("id", "submitButton");
 
 	
 
 
-	Cchatbox.appendChild(buttonArea);
+	document.getElementById("Chat").appendChild(buttonArea);
 	buttonArea.appendChild(Cinput); buttonArea.appendChild(Csend);
 }
 
-var burgMenu = document.createElement("div");
-burgMenu.setAttribute("class", "fa fa-comments-o");
-burgMenu.setAttribute("id", "burgMenu");
-burgMenu.addEventListener("click", toggleBurg);
 document.querySelector("body > header > nav").appendChild(burgMenu);
 
 function toggleBurg() {
 	var x = document.getElementById("Chat");
-	console.log("X")
+	var overlay = document.createElement("div")
+	overlay.setAttribute("class", "Coverlay show");
+	overlay.setAttribute("id", "Coverlay")
+
   if (x.style.display === "none") {
-    x.style.display = "block";
+	x.style.display = "block";
+	document.body.appendChild(overlay);
+	document.getElementById("Coverlay").addEventListener("click", function() {
+		document.getElementById("Coverlay").remove();
+		x.style.display = "none";
+	})
+	
   } else {
-    x.style.display = "none";
+	x.style.display = "none";
   }
 }
 
 toggleBurg();
+
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}

@@ -1121,6 +1121,13 @@ function findAnswer(words) {
                 lastMessage.push("#169");
                 createResponse("Size Class of structures are calculated by the game checking Lights, Devices, and triangles. Lights are the biggest killer regarding size class. Lights take 0.1 size class each.");
                 }}
+        Tregex = /money|credits|cash/i;
+        if (Tregex.test(words)) {
+            Tregex = /i have/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#999");
+                createResponse("If you want to know how many credits you have you can go to the <a class='link' style='cursor: pointer;' onclick='H.setPage(\"eb\")'>bank page</a>");
+                }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 

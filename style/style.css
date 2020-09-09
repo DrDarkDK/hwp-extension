@@ -42,7 +42,7 @@
     display: none;
     overflow: auto;
     overflow-x: hidden;
-    z-index: 2;
+    z-index: 1001;
 }
 
 .button {
@@ -80,6 +80,8 @@
     position: static;
     padding: 10px;
     left: 0 !important;
+    cursor: pointer;
+    z-index: 1505;
 }
 
 .inputAHB {
@@ -113,6 +115,39 @@
     height: 30px;
     padding: 5px;
     margin: 5px 5px 0px 0px;
+}
+
+.hws-connect .Coverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    height: 120vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    -webkit-transition: transform 1s ease-in-out; }
+  .hws-connect .Coverlay.show {
+    display: block;
+    opacity: 1; }
+
+.overlay.show {
+    display: block;
+    opacity: 1;
+}
+
+#Cnav {
+    font-size: 26px;
+    color: #d0901d;
+    text-align: center;
+    right: 30px;
+    font-weight: bold;
+    position: fixed;
+    background-color: #070E11;
+    border-radius: 5px;
+    width: 30px;
+    cursor: pointer;
 }
 
 @media all and (max-width: 845px) {

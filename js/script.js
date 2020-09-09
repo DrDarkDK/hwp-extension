@@ -703,7 +703,7 @@ function urlCheck(message) {
     }
     Tregex = /Size Class/;
     if (Tregex.test(message)) {
-        message = message.split('Size Class').join("<a target='_blank' class='link' href='https://empyrion-homeworld.net/tools/emp-class-calculator'>Size Class</a>")
+        message = message.split('Size Class').join("<a class='link' style='cursor: pointer;' onclick='H.setPage(\"eb\")'>Size Class</a>")
 	}
     return(message)
 }
