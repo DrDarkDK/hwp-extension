@@ -1043,7 +1043,7 @@ function findAnswer(words) {
             Tregex = /what/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#159");
-                createResponse("The Economy Utility Tool is a tool made by <a href='https://discord.gg/mahSXDp' class='tag' target='_blank'>@Dr. Dark#0555</a>. The tool is able to give you a great overview of your current economy, and allows you to take your economy to the next level.");
+                createResponse("The Economy Utility Tool is a tool made by <a href='https://Discord.gg/mahSXDp' class='tag' target='_blank'>@Dr. Dark#0555</a>. The tool is able to give you a great overview of your current economy, and allows you to take your economy to the next level.");
                 }}
         Tregex = /send|sent/i;
         if (Tregex.test(words)) {
