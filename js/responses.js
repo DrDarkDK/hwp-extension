@@ -1128,6 +1128,20 @@ function findAnswer(words) {
                 lastMessage.push("#999");
                 createResponse("If you want to know how many credits you have you can go to the <a class='link' style='cursor: pointer;' onclick='H.setPage(\"eb\")'>bank page</a>");
                 }}
+        Tregex = /ice/i;
+        if (Tregex.test(words)) {
+            Tregex = /get|find/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#999");
+                createResponse("You can find ice in asteroids in some different orbits, or you can collect it in the EGS HQ Stargate mission called Collector Mission. There you can mine tons of ice.");
+                }}
+        Tregex = /keep dying|constantly die|spawn kill/i;
+        if (Tregex.test(words)) {
+            Tregex = /die|dying|kill/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#999");
+                createResponse("If you keep getting killed, just press Fresh Start in the death menu. Then once you return to your base at some point you can do <a class=cmd>cb:sethome:ID<a>, and then <a class=cmd>cb:gohome<a> within 2 minutes after you die.");
+                }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 
