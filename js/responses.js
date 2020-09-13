@@ -182,11 +182,13 @@ function findAnswer(words) {
                 lastMessage.push("#20")
                 createResponse(PC(synonyms["if"]) + " some of your ship is missing, first try re-logging. If part of your ship is still missing after a relog, then go and make a ticket.");
             }
-            Tregex = /taken|captured|took|stole/i;
+            Tregex = /hws/i;
+        if (Tregex.test(words)) {
+            Tregex = /taken|capture|took|stole|change/i;
             if (Tregex.test(words)) {
-                lastMessage.push("#21")
-                createResponse("The fact that HWS claimed your structure means it exceeded the limits some way. It was most likely too big, or you had too many vessels on the playfield or in total. You can do <a class='cmd'>egs:buyback:ID</a> to buy your structure back but it can be expensive. Make sure to find the reason it was taken before you buy it back since it'll just be taken again.");
-            }
+                lastMessage.push("#999");
+                createResponse("The fact that HWS claimed your structure means it exceeded the limits some way. It was most likely too big, or you had too many vessels on the playfield or in total. You can do <a class=cmd>egs:buyback:ID<a> to buy your structure back but it can be expensive. Make sure to find the reason it was taken before you buy it back since itll just be taken again.");
+                }}
             Tregex = /lost|find|missing|disappear/i;
             Fregex = /half|25%|50%|ID\b/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
