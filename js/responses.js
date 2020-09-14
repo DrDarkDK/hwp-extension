@@ -1196,6 +1196,36 @@ function findAnswer(words) {
                 lastMessage.push("#180");
                 createResponse("CPU is a system to limit ship sizes. Most blocks devices use CPU Points and the more CPU you use the higher CPU Tier youll need, until a max of tier 4.");
                 }}
+        Tregex = /faction/i;
+        if (Tregex.test(words)) {
+            Tregex = /create/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#181");
+                createResponse("To create a faction press TAB and all the way up top click on the 3 small heads. Then locate your origin and click on it, and now youll be able to create a faction down in the bottom of the screen.");
+                }}
+        Tregex = /factionchange|switch/i;
+        if (Tregex.test(words)) {
+            Tregex = /create|faction/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#182");
+                createResponse("To change a vessel from faction to private you have to be admin of your faction. You can also just remove the core (Dont do it if its an alienNPC core) and place a new one.");
+                }}
+        Tregex = /faction|change|switch|dock/i;
+        if (Tregex.test(words)) {
+            Tregex = /create|faction|ship|vessel|sv|hv/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#183");
+                createResponse("To dock vessels simply park them on top of each others, but be aware that sometimes structures have to be of same factionor private to be docked.");
+                }}
+        Tregex = /faction|change|switch|dock|blueprint|save/i;
+        if (Tregex.test(words)) {
+            Tregex = /create|faction|ship|vessel|sv|hv|structure|vessel|ship/i;
+            if (Tregex.test(words)) {
+                Tregex = /how/i;
+                if (Tregex.test(words)) {
+                    lastMessage.push("#182");
+                    createResponse("To blueprint vessels, simply walk over to them and click ALT + O on them. After that you can find them in the F2 menu and add it to your factory.");
+        }}}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 
