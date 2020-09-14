@@ -184,7 +184,7 @@ function findAnswer(words) {
             }
             Tregex = /hws/i;
         if (Tregex.test(words)) {
-            Tregex = /taken|capture|took|stole|change/i;
+            Tregex = /taken|capture|took|stole|claim|change/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#999");
                 createResponse("The fact that HWS claimed your structure means it exceeded the limits some way. It was most likely too big, or you had too many vessels on the playfield or in total. You can do <a class=cmd>egs:buyback:ID<a> to buy your structure back but it can be expensive. Make sure to find the reason it was taken before you buy it back since itll just be taken again.");
@@ -252,7 +252,7 @@ function findAnswer(words) {
             Tregex = /who|what/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#31")
-                createResponse("HWP (Homeworld Police) is a small group of volunteers that dedicate their time to " + PC(synonyms["help"]) + " you. HWP members have some admin commands which means they can " + PC(synonyms["help"]) + " you if you get stuck or in trouble. If you have more questions about us, feel free to contact an HWP member and ask about us. At the moment the members of HWP are Dr. Dark (EU/NA), dQgnflua (NA), and Gareth_8000 (EU).");
+                createResponse("HWP (Homeworld Police) is a small group of volunteers that dedicate their time to " + PC(synonyms["help"]) + " you. HWP members have some admin commands which means they can " + PC(synonyms["help"]) + " you if you get stuck or in trouble. If you have more questions about us, feel free to contact an HWP member and ask about us. At the moment the members of HWP are Dr. Dark (EU/NA), andreapolice (EU), and Gareth_8000 (EU).");
             }
             Tregex = /become|apply|join/i;
             if (Tregex.test(words)) {
@@ -365,7 +365,7 @@ function findAnswer(words) {
                 createResponse("In general maximum size class on HWS is 7 for PvE, but some playfields have individual limits. If you press M and then read down in the right corner, you can see the specific playfield's limits. You can also go and read about the Limits and Restrictions in the HWS Guide.");
             }
             Tregex = /how many|turret|weapon/i;
-            Fregex = /origin|faction|damage|dmg/i;
+            Fregex = /origin|faction|damage|dmg|epic/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#47")
                 createResponse("You can find HWS Weapon Limits and Restrictions in the HWS Guide. But be aware. Only 21 manual weapons can work at once, so choose your weapons carefully.");
@@ -1127,22 +1127,74 @@ function findAnswer(words) {
         if (Tregex.test(words)) {
             Tregex = /i have/i;
             if (Tregex.test(words)) {
-                lastMessage.push("#999");
+                lastMessage.push("#170");
                 createResponse("If you want to know how many credits you have you can go to the <a class='link' style='cursor: pointer;' onclick='H.setPage(\"eb\")'>bank page</a>");
                 }}
         Tregex = /ice/i;
         if (Tregex.test(words)) {
             Tregex = /get|find/i;
             if (Tregex.test(words)) {
-                lastMessage.push("#999");
+                lastMessage.push("#171");
                 createResponse("You can find ice in asteroids in some different orbits, or you can collect it in the EGS HQ Stargate mission called Collector Mission. There you can mine tons of ice.");
                 }}
         Tregex = /keep dying|constantly die|spawn kill/i;
         if (Tregex.test(words)) {
             Tregex = /die|dying|kill/i;
             if (Tregex.test(words)) {
-                lastMessage.push("#999");
+                lastMessage.push("#172");
                 createResponse("If you keep getting killed, just press Fresh Start in the death menu. Then once you return to your base at some point you can do <a class=cmd>cb:sethome:ID<a>, and then <a class=cmd>cb:gohome<a> within 2 minutes after you die.");
+                }}
+        Tregex = /OCD|Orbital Cargo Drone/i;
+        if (Tregex.test(words)) {
+            Tregex = /check|see|find/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#173");
+                createResponse("You can see your OCD by going to HWS Connect and then the Orbital Cargo Drone subpage.");
+                }}
+        Tregex = /epic weapon|epic wepon/i;
+        if (Tregex.test(words)) {
+            Tregex = /what/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#174");
+                createResponse("Epics weapons are special weapons which are stronger than normal weapons, and some of them have special purposes. Those with special purposes are called Origin Weapons, and which epic thats your Origins weapon depends on which origin you are.");
+                }}
+        Tregex = /reputation point|rep point/i;
+        if (Tregex.test(words)) {
+            Tregex = /what/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#175");
+                createResponse("Reputation Points are a special currency on HWS. They are used for upgrading HWS Features like the Orbital Cargo Drone, or the Elemental Bank. They are also used for a lot of other purposes, and are very valueable on HWS. You can also turn them into HWS Ingots.");
+                }}
+        Tregex = /POI/i;
+        if (Tregex.test(words)) {
+            Tregex = /what/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#176");
+                createResponse("POIs, or Point Of Interests, are special bases. They can sometimes be admin owned, or they might belong to the aliens. Often youll be able to find valuable loot or information inside them, but be aware some POIs will try to stop you by killing you.");
+                }}
+        Tregex = /who/i;
+        if (Tregex.test(words)) {
+            Tregex = /RexXuS|Rex/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#177");
+                createResponse("RexXxuS is one of the owners of HWS (The other one is Jascha). You can read more about them on the Server Administration guide page.");
+                }
+            Tregex = /Dr. Dark|Dr Dark/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#178");
+                createResponse("Dr. Dark is a member of the HWP, and the creator of this website. He also created the Economy Utility Tool, and a discord bot for the HWS Discord. Feel free to contact him for whatever reason you may have.");
+            }
+            Tregex = /Jascha/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#179");
+                createResponse("Jascha is one of the owners of HWS (RexXxuS is the other one). He also created the Empyrion Admin Helper (EAH) or as some may know it, Chatbot.");
+            }}
+        Tregex = /CPU/i;
+        if (Tregex.test(words)) {
+            Tregex = /what/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#180");
+                createResponse("CPU is a system to limit ship sizes. Most blocks devices use CPU Points and the more CPU you use the higher CPU Tier youll need, until a max of tier 4.");
                 }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.

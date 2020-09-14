@@ -1,7 +1,7 @@
 {
 "name": "HWS Connect - AHB",
-"version": "0.1.1",
-"description": "Description",
+"version": "0.1.1.1",
+"description": "The Artificial Helping Bot can be your personal assistant on HWS Connect and help you, should you encounter any issues. Ps. This is a Community Project and is not made by the official HWS Owners.",
 "manifest_version": 2,
 "content_scripts": [ {
       "css": [ "style/style.css" ],
