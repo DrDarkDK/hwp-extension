@@ -1223,9 +1223,37 @@ function findAnswer(words) {
             if (Tregex.test(words)) {
                 Tregex = /how/i;
                 if (Tregex.test(words)) {
-                    lastMessage.push("#182");
+                    lastMessage.push("#184");
                     createResponse("To blueprint vessels, simply walk over to them and click ALT + O on them. After that you can find them in the F2 menu and add it to your factory.");
         }}}
+        Tregex = /airtight|air tight|oxygen leak|o2 leak/i;
+        if (Tregex.test(words)) {
+            Tregex = /find|locate/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#185");
+                createResponse("To find an oxygen leak in your base first of all press N. Then locate Debug in the little popup menu, and then toggle Show Airtight Blocks. Now all the green you (hopefully) see are the airtight blocks. You need to search for the non-green block.");
+                }}
+        Tregex = /resource package/i;
+        if (Tregex.test(words)) {
+            Tregex = /find|locate,check|how many/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#186");
+                createResponse("You can have a maximum of 10 resource packages at a time. You should write <a class=cmd>do:info<a> to check how many you have. You can always refill them by buying new once at HWS Connect.");
+                }}
+        Tregex = /player id|account number|entity id|player nr|player number/i;
+        if (Tregex.test(words)) {
+            Tregex = /check|find|locate/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#187");
+                createResponse("To check your Account Number, simply write <a class=cmd>cb:info<a> in the chat and look for Account Number.");
+                }}
+        Tregex = /pickup|recollect/i;
+        if (Tregex.test(words)) {
+            Tregex = /core/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#188");
+                createResponse("To pickup a core you need to use EGS Recycle. Any other way the core will be broken to pieces (This includes NPC Cores!).");
+                }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 
