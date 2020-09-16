@@ -1275,6 +1275,20 @@ function findAnswer(words) {
                 lastMessage.push("#191");
                 createResponse("To leave a faction, first of all press TAB. Then all the way up top click on the 3 small heads, and click on whatever origin you are. Then youll see your faction on the right side, and now you just need to click leave in the bottom.");
                 }}
+        Tregex = /epic assault rifle|epic minigun|epic laser rifle/i;
+        if (Tregex.test(words)) {
+            Tregex = /get|find|recollect/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#192");
+                createResponse("To get your origin weapon back you can find it in some random POIs, or you can go to the HWS Marketplace and buy a new one.");
+                }}
+        Tregex = /password/i;
+        if (Tregex.test(words)) {
+            Tregex = /server|hws|the password/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#193");
+                createResponse("There is no password for the HWS server. If you are asked for one when you try to join, simply select another server and then HWS again. It is an old game bug asking for password.");
+                }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 
