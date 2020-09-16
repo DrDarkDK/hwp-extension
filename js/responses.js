@@ -488,14 +488,14 @@ function findAnswer(words) {
                 createResponse("HWS Connect is the largest feature of HWS. HWS Connect is like a hub for all features you find on HWS. HWS Connect is definitely worth a look, and once you master it you will be able to feel your wealth grow.");
             }
         }
-        Tregex = /earn|get|make/i;
+        Tregex = /earn|get|make|what is|what's/i;
         if (Tregex.test(words)) {
             Tregex = /credit|money/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#69")
                 createResponse("It is quite easy to earn money if you know how. An easy way to earn money use through interest from the Elemental Bank. If you choose to base your income on interest, I recommend using the Economy Utility Tool to maximize your profit. Another way to earn money is by selling stuff on the HWS Marketplace.");
             }
-            Tregex = /reputation points|\rp\b/i;
+            Tregex = /reputation points|rp\b/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#70")
                 createResponse("Reputation Points are a special currency on HWS. They're used for many things, including upgrading things like the Elemental Bank, Orbital Cargo Drone, or EGS Recycle. You can get RP by collecting Alien Containers. There are also a few other ways to earn RP which you can read about in the HWS Guide.");
@@ -1288,6 +1288,13 @@ function findAnswer(words) {
             if (Tregex.test(words)) {
                 lastMessage.push("#193");
                 createResponse("There is no password for the HWS server. If you are asked for one when you try to join, simply select another server and then HWS again. It is an old game bug asking for password.");
+                }}
+        Tregex = /color|colour/i;
+        if (Tregex.test(words)) {
+            Tregex = /container/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#194");
+                createResponse("Purple alien containers are for Federation Origin, Grey for Freelancer Origin, and Red once are for the Pirate Origin. Those 3 types are the unique containers which each have 1 origin. All origins can use Yellow Alien Containers but they only give 1 RP.");
                 }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
