@@ -220,10 +220,10 @@ function findAnswer(words) {
                 lastMessage.push("#26")
                 createResponse(PC(synonyms["if"]) + " your inventory hasn't arrived after a Cross Server Warp, then you should try flying around for a minute or two. Eventually, you should be teleported, and it should say so in your private chat as well. If by then you don't have your inventory go make a ticket please, and the admins will " + PC(synonyms["help"]) + " you when they get time.");
             }
-            Tregex = /alien container|\ac\b|use/i;
+            Tregex = /alien container|alien crate|\ac\b|use/i;
             Fregex = /empty|nothing|what/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
-                Tregex = /container|\ac\b/i;
+                Tregex = /container|alien crate|\ac\b/i;
                 if (Tregex.test(words)) {
                     lastMessage.push("#27")
                     createResponse("When you equip an Alien Container and have your Origin Weapon then your alien containers will magically disappear and turn into Reputation Points.");
@@ -606,7 +606,7 @@ function findAnswer(words) {
         }
         Tregex = /how|whats/i;
         if (Tregex.test(words)) {
-            Tregex = /pay|transfer/i;
+            Tregex = /pay|put|transfer/i;
             Fregex = /tax/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#88")
@@ -1253,6 +1253,27 @@ function findAnswer(words) {
             if (Tregex.test(words)) {
                 lastMessage.push("#188");
                 createResponse("To pickup a core you need to use EGS Recycle. Any other way the core will be broken to pieces (This includes NPC Cores!).");
+                }}
+        Tregex = /fall apart|collapse/i;
+        if (Tregex.test(words)) {
+            Tregex = /base/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#189");
+                createResponse("The reason your base collapsed is probably due to Structual Integrity. Or said in another way.. physics ;) Make sure your base is touching the ground under all of the foundation when you spawn it.");
+                }}
+        Tregex = /check|find|see/i;
+        if (Tregex.test(words)) {
+            Tregex = /struct integrity|structual integrity/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#190");
+                createResponse("To check Structual Integrity, first of all click N. Then go to the little debug menu, and check the Structural Integrity box. Now the more green something is on your base, the more stable it is. The more red it is the more unstable it is.");
+                }}
+        Tregex = /leave|abandon|get out off/i;
+        if (Tregex.test(words)) {
+            Tregex = /faction/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#191");
+                createResponse("To leave a faction, first of all press TAB. Then all the way up top click on the 3 small heads, and click on whatever origin you are. Then youll see your faction on the right side, and now you just need to click leave in the bottom.");
                 }}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
