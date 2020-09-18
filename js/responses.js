@@ -1,12 +1,12 @@
 lastMessage.push("#00")
 SendMessage("MessageBot", botName() + "Hello, what can I help you with? " + PC(synonyms["if"]) + " you have questions about me, then please read the <a href='https://forum.empyrion-homeworld.net/t/hws-artificial-help-bot/25530' target='_blank' class='link'>forum post</a> about me.<br><br>You can also experience the full version by going to <a href='https://ahb.hws.global' target='_blank' class='link'>https://ahb.hws.global/</a><br><br>" + PC(synonyms["whatsup"]))
 
-function findAnswer(words) {
+function findAnswerEN(words) {
     if (ticketMode == false) {
         Tregex = /\hello\b|\hey\b|\hi\b|\Greeting\b|\howdy\b|\sup\b/i;
         if (Tregex.test(words)) {
             lastMessage.push("#01")
-            createResponse(PC(synonyms["hello"]));
+            createResponse(PC(synonyms["hello"]), true);
         }
         Tregex = /how are you|whats up/i;
         if (Tregex.test(words) && !oldMessages.includes("#02")) {
@@ -47,7 +47,7 @@ function findAnswer(words) {
                     lastMessage.push("#147");
                     createResponse(PC(synonyms["iWill"]) + " do my best to " + PC(synonyms["help"]) + " you, but why don't you ask your question and then we'll see.");
         }}}
-        Tregex = /stuck|backpack|bag|\id\b/i;
+        Tregex = /stuck|unstuck|backpack|bag|\id\b/i;
         if (Tregex.test(words)) {
             Tregex = /\i\b|\im\b/i;
             Fregex = /ship|backpack|bag|call you|name you/i;
@@ -59,13 +59,12 @@ function findAnswer(words) {
                 }
             }
             Tregex = /underground|under ground|terrain/i;
-            Fregex = "";
             if (Tregex.test(words)) {
                 lastMessage.push("#05")
                 createResponse("Backpacks getting stuck underground is sadly an old bug, and there's not much which can be done. You can try with a ticket, but the chances of getting your backpack back are low since the admins have few logs about it.");
             }
             Tregex = /ship|\vessel|\sv\b|\cv\b|stuck|get|\to\b/i;
-            Fregex = /\i\b|\im\b|backpack|bag/i;
+            Fregex = /im\b|backpack|bag/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#06")
                 createResponse(PC(synonyms["if"]) + " your ship is stuck try writing <a class='cmd'>cb:getshiphere:ID</a> or <a class='cmd'>cb:getshipdown:ID</a>. If those commands don't help you try checking if any HWP members are online and then they'll " + PC(synonyms["help"]) + " you.");
@@ -91,7 +90,7 @@ function findAnswer(words) {
                 lastMessage.push("#09")
                 createResponse(PC(synonyms["if"]) + " you can't " + PC(synonyms["find"]) + " your backpack, make sure your nearby the area where you died, and then press M and look at the map. A little icon should display by your backpack. You can also try buying a detector from the HWS Marketplace, and scan the area and see if it shows up.");
             }
-            Tregex = /find|check|get/i;
+            Tregex = /find|check|get|figure out/i;
             if (Tregex.test(words)) {
                 Tregex = /\bid/i;
                 if (Tregex.test(words)) {
@@ -169,7 +168,7 @@ function findAnswer(words) {
             }
         }
 
-        Tregex = /ship|base|\cv\b|\sv|hv\b|vessel|motorbike kit/i;
+        Tregex = /ship|base|\bcv|\bsv|\bhv|vessel|motorbike kit/i;
         if (Tregex.test(words)) {
             Tregex = /wont|cant|will not/i;
             Fregex = /find|rotate|rotation|turn/i;
@@ -189,13 +188,13 @@ function findAnswer(words) {
                 lastMessage.push("#999");
                 createResponse("The fact that HWS claimed your structure means it exceeded the limits some way. It was most likely too big, or you had too many vessels on the playfield or in total. You can do <a class=cmd>egs:buyback:ID<a> to buy your structure back but it can be expensive. Make sure to find the reason it was taken before you buy it back since itll just be taken again.");
                 }}
-            Tregex = /lost|find|missing|disappear/i;
+            Tregex = /lost|find|missing|disappear|is gone|has gone/i;
             Fregex = /half|25%|50%|ID\b/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#22")
                 createResponse(PC(synonyms["if"]) + " your structures are missing, try checking your Structure Commander and see if you can " + PC(synonyms["find"]) + " them there. If you can't find them go to https://help.hws.global and make a ticket, and then the admins can check what happened.");
             }
-            Tregex = /start|free sv|spawn|newbie|beam me up|free|motorbike kit/i;
+            Tregex = /start|free sv|starter sv|spawn|newbie|beam me up|free|motorbike kit/i;
             Fregex = /rotate|rotation|turn|gone|missing|the best|a good/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#23")
@@ -356,7 +355,7 @@ function findAnswer(words) {
                 createResponse(PC(synonyms["if"]) + " you're in doubt about the HWS Rules you can click there, and read them. If you think someone is cheating or exploiting, then I suggest you DM a member of the Homeworld Police. If you can provide clear evidence, we will investigate the situation. Videos are <b>always</b> the best evidence.");
             }
         }
-        Tregex = /limit|max size|restriction|weapon|turret|damage|dmg/i;
+        Tregex = /limit|biggest size|max size|restriction|weapon|turret|damage|dmg/i;
         if (Tregex.test(words)) {
             Tregex = /what/i;
             Fregex = /weapon|turret|damange|dmg/i;
@@ -488,14 +487,14 @@ function findAnswer(words) {
                 createResponse("HWS Connect is the largest feature of HWS. HWS Connect is like a hub for all features you find on HWS. HWS Connect is definitely worth a look, and once you master it you will be able to feel your wealth grow.");
             }
         }
-        Tregex = /earn|get|make|what is|what's/i;
+        Tregex = /earn|get|make|what is|what's|get more/i;
         if (Tregex.test(words)) {
             Tregex = /credit|money/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#69")
                 createResponse("It is quite easy to earn money if you know how. An easy way to earn money use through interest from the Elemental Bank. If you choose to base your income on interest, I recommend using the Economy Utility Tool to maximize your profit. Another way to earn money is by selling stuff on the HWS Marketplace.");
             }
-            Tregex = /reputation points|rp\b/i;
+            Tregex = /reputation|rp\b/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#70")
                 createResponse("Reputation Points are a special currency on HWS. They're used for many things, including upgrading things like the Elemental Bank, Orbital Cargo Drone, or EGS Recycle. You can get RP by collecting Alien Containers. There are also a few other ways to earn RP which you can read about in the HWS Guide.");
@@ -637,7 +636,7 @@ function findAnswer(words) {
                 }}
         Tregex = /hws|server|command|properties|setting|config/i;
         if (Tregex.test(words)) {
-            Tregex = /ip/i;
+            Tregex = /\bip/i;
             Fregex = /origin|starter|wipe/i;
             if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#93")
@@ -720,7 +719,8 @@ function findAnswer(words) {
                 createResponse("I don't know where I am! I live inside a computer. It's too dark in here. I can't see anything.");
             }
             Tregex = /who|what/i;
-            if (Tregex.test(words)) {
+            Fregex = /can/
+            if (Tregex.test(words) && !Fregex.test(words)) {
                 lastMessage.push("#106")
                 createResponse(PC(synonyms["i"]) + " Dr. Dark's attempt at an 'AI'. My job is to guide you, so maybe I can save the police/admins time. Or maybe I can just " + PC(synonyms["help"]) + " you faster than a human would be able to.");
             }
@@ -794,7 +794,7 @@ function findAnswer(words) {
             Tregex = /password/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#114")
-                createResponse("There is no password on HWS. Anyone can join as they want. If you try to join and the server asks for a password, then you just need to select another server in the multiplayer menu, and then HWS again. HWS asking for a password is an old game bug.")
+                createResponse("There is no password on HWS. Anyone can join as they want. " + PC(synonyms["if"]) + " try to join and the server asks for a password, then you just need to select another server in the multiplayer menu, and then HWS again. HWS asking for a password is an old game bug.")
             }
         }
         Tregex = /cant|can you|can u|cannot|can not/i;
@@ -1014,7 +1014,7 @@ function findAnswer(words) {
                 lastMessage.push("#154");
                 createResponse("To access your Elemental Bank, you have to go to HWS Connect, and click the big green elemental bank button. In there you'll be able to see your EB info. You can also just write <a class='cmd'>eb:info</a> in the server chat ingame.");
                 }}
-        Tregex = /Unlock Point|UP/i;
+        Tregex = /Unlock Point|\bUP/i;
             if (Tregex.test(words)) {
                 lastMessage.push("#155");
                 createResponse("Upgrade points are used for the Tech Tree (Press F3 ingame.). You earn them primarily by leveling up. You can see here for more info by HwP UP Unlock Guide.");
@@ -1296,6 +1296,36 @@ function findAnswer(words) {
                 lastMessage.push("#194");
                 createResponse("Purple alien containers are for Federation Origin, Grey for Freelancer Origin, and Red once are for the Pirate Origin. Those 3 types are the unique containers which each have 1 origin. All origins can use Yellow Alien Containers but they only give 1 RP.");
                 }}
+        Tregex = /indestuctible|undestructable|cant destroy|cant damage/i;
+        if (Tregex.test(words)) {
+            Tregex = /POI/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#195");
+                createResponse("There are 2 kinds of cores you can find in a POI. Theres an alien core which is the most common one, and then theres an admin alien core. Admin alien cores cant be destroyed and the rest of the POI cant either. But containers can still be looted.");
+                }}
+        Tregex = /set home|sethome/i;
+        if (Tregex.test(words)) {
+            Tregex = /\bcmd|command/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#196");
+                createResponse("To set your home go into your server chat, and then write <a class=cmd>cb:sethome:ID<a>. After that you can do <a class=cmd>cb:gohome<a>, but be aware the Cross Server Warping resets your home.");
+                }}
+        Tregex = /mute|silence/i;
+        if (Tregex.test(words)) {
+            Tregex = /how/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#197");
+                createResponse("To mute a player (only locally), you can go into the chat and write <a class='cmd'>:mp playername</a>. Then to unmute them do same command but write ump instead of mp.");
+                }}
+        Tregex = /tell|check/i;
+        if (Tregex.test(words)) {
+            Tregex = /how much|the amount/i;
+            if (Tregex.test(words)) {
+                Tregex = /RP|Reputation/i;
+                if (Tregex.test(words)) {
+                    lastMessage.push("#198");
+                    createResponse("To check how many Reputation Points you have you have to either go ingame and write <a>o:info<a>, and then youll be able to see your reputation points, or you can go to HWS Connect and check the Player Info page.");
+        }}}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 

@@ -154,6 +154,13 @@
     line-height: normal !important;
 }
 
+.cmd {
+    border: 2px outset #019494;
+    padding: 1px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
 @media all and (max-width: 845px) {
 
     .input,

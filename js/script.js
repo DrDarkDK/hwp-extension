@@ -171,7 +171,7 @@ submitButton.addEventListener("click", function() {
             var inputArray = inputArea.value
     
             try {if (devMode.includes("true")) {try {devFindAnswer(inputArray)} catch(err) {}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited.
-            try {if (!devMode.includes("true")) {findAnswer(inputArray);}} catch(err) {findAnswer(inputArray);}
+            try {if (!devMode.includes("true")) {findAnswerEN(inputArray);}} catch(err) {findAnswerEN(inputArray);}
             window.inputArea.value = "";
             oldMessages = lastMessage;
             lastMessage = [];
@@ -179,158 +179,6 @@ submitButton.addEventListener("click", function() {
 
     }
 );
-
-//Change 1 to 0 inorder to disable this marquee.
-//window.onload = function() {if(0 == 1) {addMarq();};}; function addMarq() {var x = document.createElement("marquee");x.innerHTML = "<b style='color: #fdb100'>Important:</b>";x.setAttribute("scrollamount", 1); x.setAttribute("scrolldelay", "10");x.setAttribute("truespeed", "");x.setAttribute("loop", 2);document.getElementById("marq").appendChild(x)}
-
-/*
-function submitText() {
-    if (inputArea.value.length < 2) {
-        inputArea.setAttribute("placeholder", "Needs at least 2 character.");
-        inputArea.value = "";
-    } else {
-        SendMessage("MessagePerson", userName() + inputArea.value);
-
-        if (ticketMode == true) {
-            canceldefault = true;
-            var quickArray = inputArea.value.split(" ");
-            if (inputArea.value.toLowerCase() != "stop") {
-                switch (questionNumber) {
-                    case 1:
-                        ticket["title"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>Ticket Title: </b>" + ticket["title"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "Now, please explain with as much details at possible what happened?"
-                        );
-                        break;
-                    case 2:
-                        ticket["WhatHappened"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>What Happened: </b>" + ticket["WhatHappened"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "Who were involved in this? Please use their steam names/ingame names."
-                        );
-                        break;
-                    case 3:
-                        ticket["Players"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>Players involved: </b>" + ticket["Players"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "Which server did it happen on? The EU, or the NA server? Or maybe both?"
-                        );
-                        break;
-                    case 4:
-                        ticket["Server"] = extraEncode(inputArea.value);
-                        SendMessage("MessageTicket", "<b>Server: </b>" + ticket["Server"]);
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "When did this happen? Please use servertime (CEST timezone or write <a class='cmd'>cb:time</a> ingame.)"
-                        );
-                    case 5:
-                        ticket["Time"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>When did this happen: </b>" + ticket["Time"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "Which playfield did this happen on? (Playfield = Name of the planet/orbit)"
-                        );
-                        break;
-                    case 6:
-                        ticket["Playfield"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>Which playfield did this happen on: </b>" +
-                            ticket["Playfield"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "What are the <a href='https://empyrion-homeworld.net/hws-connect.html#page-structures' class='link'>Structure name(s)</a>"
-                        );
-                        break;
-                    case 7:
-                        ticket["StructureNames"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>Structure Names: </b>" + ticket["StructureNames"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "What are the structure ID's?"
-                        );
-                        break;
-                    case 8:
-                        ticket["StructureIDs"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>Structure ID's: </b>" + ticket["StructureIDs"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "How can we help you now?"
-                        );
-                        break;
-                    case 9:
-                        ticket["WhatNow"] = extraEncode(inputArea.value);
-                        SendMessage(
-                            "MessageTicket",
-                            "<b>How can we help now: </b>" + ticket["WhatNow"]
-                        );
-                        questionNumber++;
-                        SendMessage(
-                            "MessageBot",
-                            botName() + "That was all. I'll generate a link now so you can create a ticket."
-                        );
-                        createTicketLink();
-                        questionNumber = 0;
-                        ticket = [];
-                        ticketMode = false;
-                        break;
-                }
-            } else {
-                questionNumber = 0;
-                ticket = [];
-                ticketMode = false;
-                SendMessage(
-                    "MessageBot",
-                    botName() + "Ticket mode has been disabled. You're now free to ask questions again."
-                );
-            }
-        }
-        inputArea.value = inputArea.value.split("#").join("")
-        inputArea.value = inputArea.value.split("%").join("")
-        inputArea.value = inputArea.value.split("&").join("")
-        inputArea.value = inputArea.value.split("/").join("")
-        inputArea.value = inputArea.value.split("'").join("")
-
-        var inputArray = inputArea.value
-
-        try {if (devMode.includes("true")) {try {devFindAnswer(inputArray)} catch(err) {}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited.
-        try {if (!devMode.includes("true")) {findAnswer(inputArray);}} catch(err) {findAnswer(inputArray);}
-        window.inputArea.value = "";
-        oldMessages = lastMessage;
-        lastMessage = [];
-    }
-}*/
 
 function SendMessage(msgclass, msg) {
     var Chat = document.getElementById("ChatArea");
@@ -470,7 +318,7 @@ function urlCheck(message) {
     }
     Tregex = /https:\/\/help.hws.global/;
     if (Tregex.test(message)) {
-        message = message.split("https://help.hws.global").join('<a href="https://help.hws.global" class="link" target="_blank">https://help.hws.global</a>')
+        message = message.split("https://help.hws.global").join('<a href="https://help.hws.global" class="link" target="_blank">https://help.hws.global/</a>')
     }
     Tregex = /ticket/;
     if (Tregex.test(message)) {
