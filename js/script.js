@@ -171,7 +171,7 @@ submitButton.addEventListener("click", function() {
             var inputArray = inputArea.value
     
             try {if (devMode.includes("true")) {try {devFindAnswer(inputArray)} catch(err) {}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited.
-            try {if (!devMode.includes("true")) {findAnswer(inputArray);}} catch(err) {findAnswer(inputArray);}
+            try {if (!devMode.includes("true")) {findAnswerEN(inputArray);}} catch(err) {findAnswerEN(inputArray);}
             window.inputArea.value = "";
             oldMessages = lastMessage;
             lastMessage = [];
@@ -288,22 +288,6 @@ function removeA(arr) {
         }
     }
     return arr;
-}
-
-synonyms = {
-    okay: ["Okay", "All right", "Alright"],
-    ENhello: ["Hi.", "Hello.", "Greetings.", "Howdy.", "Hi there.", "Hello there.", "Good to see you.", "Nice to see you."],
-    DEhello: ["Hi.", "Hey.", "Ich grüße Sie.", "Hallo du.", "Schön, Sie zu sehen."],
-    whatsup: ["How are you?", "What's up?", "What's happening?", "How goes it?", "How's it going?"],
-    if: ["If", "In case that", "In case", "Assuming that", "Granted that"],
-    i: ["I'm", "I am"],
-    iWill: ["I'll", "I will", "I am going to", "I'm going to"],
-    help: ["help", "assist"],
-    find: ["find", "locate"],
-    youWill: ["you'll", "you will"],
-    howUdoing: [" good, thanks for asking :)", " alright.", " doing great!", " doing well, and yourself?", " fine, and you?"],
-    repeat: ["You already asked me that. ", "Why are you asking me that again? ", "I already answered that. "],
-    thanks: ["You're welcome ;)", "No problem :)", "Anytime."]
 }
 
 synonyms = {
