@@ -1296,6 +1296,36 @@ function findAnswer(words) {
                 lastMessage.push("#194");
                 createResponse("Purple alien containers are for Federation Origin, Grey for Freelancer Origin, and Red once are for the Pirate Origin. Those 3 types are the unique containers which each have 1 origin. All origins can use Yellow Alien Containers but they only give 1 RP.");
                 }}
+        Tregex = /indestuctible|undestructable|cant destroy|cant damage/i;
+        if (Tregex.test(words)) {
+            Tregex = /POI/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#195");
+                createResponse("There are 2 kinds of cores you can find in a POI. Theres an alien core which is the most common one, and then theres an admin alien core. Admin alien cores cant be destroyed and the rest of the POI cant either. But containers can still be looted.");
+                }}
+        Tregex = /set home|sethome/i;
+        if (Tregex.test(words)) {
+            Tregex = /\bcmd|command/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#196");
+                createResponse("To set your home go into your server chat, and then write <a class=cmd>cb:sethome:ID<a>. After that you can do <a class=cmd>cb:gohome<a>, but be aware the Cross Server Warping resets your home.");
+                }}
+        Tregex = /mute|silence/i;
+        if (Tregex.test(words)) {
+            Tregex = /how/i;
+            if (Tregex.test(words)) {
+                lastMessage.push("#197");
+                createResponse("To mute a player (only locally), you can go into the chat and write <a class='cmd'>:mp playername</a>. Then to unmute them do same command but write ump instead of mp.");
+                }}
+        Tregex = /tell|check/i;
+        if (Tregex.test(words)) {
+            Tregex = /how much|the amount/i;
+            if (Tregex.test(words)) {
+                Tregex = /RP|Reputation/i;
+                if (Tregex.test(words)) {
+                    lastMessage.push("#198");
+                    createResponse("To check how many Reputation Points you have you have to either go ingame and write <a>o:info<a>, and then youll be able to see your reputation points, or you can go to HWS Connect and check the Player Info page.");
+        }}}
 
         try {Tregex = /dev/i; if (Tregex.test(words)) { Tregex = /activate|enable|on/i; if (Tregex.test(words)) {devMode.push("true"); createResponse("Dev mode activated.")}}} catch(err) {} //Just something new I use when I work on the bot. Can be ignored since primary file is never commited. This code will result in an error without the primary file.
 
